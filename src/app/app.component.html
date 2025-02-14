@@ -1,0 +1,65 @@
+<!-- Contenedor principal de la aplicación -->
+<div class="container">
+  <!-- Muestra el título principal de la aplicación -->
+  <h1>{{ title }}</h1>
+
+  <!-- Sección de entrada de datos -->
+  <div class="input-section">
+    <h2>Ingresa tu ubicación</h2>
+    <!-- Si no se han obtenido las coordenadas automáticamente, muestra campos para ingreso manual -->
+    <div *ngIf="userLat === null || userLng === null">
+      <label class="latitud-label">
+        Latitud:
+        <!-- Campo de entrada para la latitud, enlazado bidireccionalmente con userLat -->
+        <input type="number" [(ngModel)]="userLat" placeholder="Ingresa latitud">
+      </label>
+      <label class="longitud-label">
+        Longitud:
+        <!-- Campo de entrada para la longitud, enlazado con userLng -->
+        <input type="number" [(ngModel)]="userLng" placeholder="Ingresa longitud">
+      </label>
+      <!-- Botón para iniciar la búsqueda manualmente -->
+      <button (click)="buscarGasolineras()">Buscar</button>
+    </div>
+
+    <!-- Sección de filtros para refinar la búsqueda -->
+    <div class="filters">
+      <h3>Filtros</h3>
+      <label>
+        Empresa:
+        <!-- Campo de entrada para filtrar por empresa; al escribir se actualiza la búsqueda -->
+        <input type="text" [(ngModel)]="selectedCompany" (input)="onFilterChange()" placeholder="Filtrar por empresa">
+      </label>
+      <label>
+        Tipo de Carburante:
+        <!-- Campo para filtrar por tipo de carburante; se actualiza la búsqueda al modificar -->
+        <input type="text" [(ngModel)]="selectedFuelType" (input)="onFilterChange()" placeholder="Filtrar por carburante">
+      </label>
+    </div>
+  </div>
+
+  <!-- Sección de salida de datos -->
+  <div class="output-section">
+    <h2>Resultados</h2>
+    <!-- Muestra un mensaje de carga mientras se esperan los datos -->
+    <div *ngIf="loading">Cargando gasolineras...</div>
+    <!-- Muestra un mensaje de error en caso de fallo -->
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <!-- Si hay gasolineras en el array, se listan -->
+    <div *ngIf="gasStations && gasStations.length">
+      <ul>
+        <!-- Itera sobre cada gasolinera y muestra su información -->
+        <li *ngFor="let station of gasStations">
+          <h3>{{ station.name }}</h3>
+          <p><strong>Dirección:</strong> {{ station.address }}</p>
+          <p><strong>Empresa:</strong> {{ station.company }}</p>
+          <p><strong>Ubicación:</strong> {{ station.lat }}, {{ station.lng }}</p>
+          </li>
+      </ul>
+    </div>
+    <!-- Si no se encuentran gasolineras y no se está cargando, muestra un mensaje informativo -->
+    <div *ngIf="gasStations && gasStations.length === 0 && !loading ">
+      No se encontraron gasolineras cercanas.
+    </div>
+  </div>
+</div>

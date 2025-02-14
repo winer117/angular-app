@@ -1,0 +1,112 @@
+/* Estilo para el contenedor principal */
+
+
+ .container {
+  max-width: 1000px;              
+  margin: 20px auto;             
+  padding: 10px;                 
+  font-family: Arial, sans-serif;
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+    url('/carburante.png');
+  background-size: cover;       
+  background-repeat: no-repeat; 
+  background-position: center;
+    
+  }
+  .container h1 {
+    color: rgb(27, 27, 27);
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+  .container h2{
+
+    color: rgb(7, 12, 12);
+  }
+  .latitud-label {
+    color: rgb(15, 15, 100); /* Cambia el color a lo que necesites */
+    border: 2px solid rgb(0, 0, 0); /* Agrega un borde azul */
+    padding: 4px; /* Opcional: agrega espacio interno */
+    border-radius: 4px; /* Opcional: bordes redondeados */
+    display: inline-block; /* Para que el borde envuelva el contenido */
+    margin-bottom: 8px; /* Espacio entre elementos, si es necesario */
+    font-weight: bold;
+  }
+  
+  .longitud-label {
+    color: rgb(33, 6, 95);
+    border: 2px solid rgb(3, 2, 2);
+    padding: 4px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  /* Estilos para las secciones de entrada y salida */
+  .input-section, .output-section {
+    margin-bottom: 20px;           /* Espacio inferior entre secciones */
+    padding: 15px;                 /* Espaciado interno de 15px */
+    border: 1px solid #ccc;        /* Borde gris claro */
+    border-radius: 5px;            /* Bordes redondeados */
+  }
+  
+  /* Estilo para las etiquetas */
+  label {
+    display: block;                /* Muestra cada etiqueta en bloque */
+    margin-bottom: 10px;           /* Espacio inferior entre etiquetas */
+  }
+  
+  /* Estilos para los campos de entrada (números y texto) */
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;                   /* Ocupa el 100% del ancho del contenedor */
+    padding: 5px;                  /* Espaciado interno de 5px */
+    margin-top: 5px;               /* Margen superior de 5px */
+    box-sizing: border-box;        /* Incluye padding y borde en el cálculo del ancho */
+  }
+  
+  /* Estilo para el botón */
+  button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #007bff; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease; /* Transición suave */
+}
+button:hover {
+  background-color: #007bffc2; 
+}
+button:active {
+  transform: scale(0.95); /* Reduce tamaño al hacer clic */
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+  
+  /* Estilo para mensajes de error */
+  .error {
+    color: rgb(250, 2, 2);
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Alinea el texto y el spinner */
+    gap: 11px; /* Espacio entre el texto y el spinner */
+}
+
+/* Spinner animado */
+.error::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 3px solid red;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(340deg); }
+}
+
