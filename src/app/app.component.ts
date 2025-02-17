@@ -92,12 +92,19 @@ export class AppComponent implements OnInit {
   }
 
   usarCoordenadasManuales(): void {
-    if (this.manualLat !== null && this.manualLng !== null) {
+    if (
+      this.manualLat !== null &&
+      this.manualLng !== null &&
+      this.manualLat >= -90 &&
+      this.manualLat <= 90 &&
+      this.manualLng >= -180 &&
+      this.manualLng <= 180
+    ) {
       this.userLat = this.manualLat;
       this.userLng = this.manualLng;
       this.buscarGasolineras();
     } else {
-      this.errorMessage = 'Por favor, ingresa coordenadas válidas.';
+      this.errorMessage = 'Por favor, ingresa coordenadas válidas (Latitud: -90 a 90, Longitud: -180 a 180).';
     }
-  }
+ }
 }
