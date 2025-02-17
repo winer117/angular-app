@@ -107,6 +107,6 @@ button:active {
 
 @keyframes spin {
     from { transform: rotate(0deg); }
-    to { transform: rotate(340deg); }
+    to { transform: rotate(380deg); }
 }
 
